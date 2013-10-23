@@ -31,7 +31,7 @@ A email designated to receive messages from the server. Examples:
 	define('SYSTEM_EMAIL', 'henneberger@g.harvard.edu'); 
 
 # Default DB name for this app
-	define('DB_NAME', "myapp_com"); 
+	define('DB_NAME', "p2_feddeready_com"); 
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');
@@ -43,5 +43,22 @@ A email designated to receive messages from the server. Examples:
 	//define('SMTP_PASSWORD', '');
 
 # For extra security, you might want to set different salts than what the core uses
-	//define('PASSWORD_SALT', '');
-	//define('TOKEN_SALT', '');
+	define('PASSWORD_SALT', 'u8p7avQkkemv3N7RqCTSFJ1_bE@V)tFoOd6aLb^y');
+	define('TOKEN_SALT', '_7gqmb*T$2Nng&nGIxuowZc!8aT24HZ01)g5vbXY');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

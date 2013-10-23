@@ -120,6 +120,7 @@ class users_controller extends base_controller {
         # If user is blank, they're not logged in; redirect them to the login page
             if(!$this->user) {
             Router::redirect('/users/login');
+            /*die('Members only. <a href='/users/login')*/
         }
 
         # If they weren't redirected away, continue:

@@ -40,13 +40,15 @@ class users_controller extends base_controller {
 
     }
 
-    public function login() {
+    public function login($error = NULL) {
 
-        # Setup view
-        $this->template->content = View::instance('v_users_login');
-        $this->template->title   = "Login";
+        # Set up the view
+        $this->template->content = View::instance("v_users_login");
 
-        # Render template
+        # Pass data to the view
+        $this->template->content->error = $error;
+
+        # Render the view
         echo $this->template;
 
     }
@@ -69,13 +71,13 @@ class users_controller extends base_controller {
         $token = DB::instance(DB_NAME)->select_field($q);
 
         # If we didn't find a matching token in the database, it means login failed
-        if(!$token) {
 
+            if(!$token) {
             # Send them back to the login page
-            Router::redirect("/users/login/");
+            Router::redirect("/users/login/error");
 
         # But if we did, login succeeded! 
-    } else {
+            } else {
 
         /* 
         Store this token in a cookie using setcookie()
@@ -95,14 +97,39 @@ class users_controller extends base_controller {
     }
 
     public function logout() {
-        echo "This is the logout page";
+
+        # Generate and save a new token for next login
+        $new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
+
+        # Create the data array we'll use with the update method
+        # In this case, we're only updating one field, so our array only has one entry
+        $data = Array("token" => $new_token);
+
+        # Do the update
+        DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$this->user->token."'");
+
+        # Delete their token cookie by setting it to a date in the past - effectively logging them out
+        setcookie("token", "", strtotime('-1 year'), '/');
+
+        # Send them back to the main index.
+        Router::redirect("/");
     }
 
     public function profile($user_name = NULL) {
 
-        # Set up the View
+        # If user is blank, they're not logged in; redirect them to the login page
+            if(!$this->user) {
+            Router::redirect('/users/login');
+        }
+
+        # If they weren't redirected away, continue:
+
+        # Setup view
         $this->template->content = View::instance('v_users_profile');
-        $this->template->title = "Profile";
+        $this->template->title   = "Profile of".$this->user->first_name;
+
+        # Render template
+        echo $this->template;
 
         # Load client files
         $client_files_head = Array(

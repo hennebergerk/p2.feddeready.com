@@ -106,7 +106,7 @@ class users_controller extends base_controller {
         $data = Array("token" => $new_token);
 
         # Do the update
-        DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$this->user->token."'");
+        DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->token."'");
 
         # Delete their token cookie by setting it to a date in the past - effectively logging them out
         setcookie("token", "", strtotime('-1 year'), '/');
@@ -129,8 +129,17 @@ class users_controller extends base_controller {
         $this->template->content = View::instance('v_users_profile');
         $this->template->title   = "Profile of".$this->user->first_name;
 
-        # Render template
-        echo $this->template;
+        # Query for user posts
+        $q = 'SELECT 
+                *
+            FROM posts 
+            WHERE user_id = '.$this->user->user_id;
+
+        # Run the query
+        $posts = DB::instance(DB_NAME)->select_rows($q);
+
+        # Pass data to the View
+        $this->template->content->posts = $posts;
 
         # Load client files
         $client_files_head = Array(
@@ -158,4 +167,4 @@ class users_controller extends base_controller {
 
     }
 
-} # end of the class
+} 

@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 	<!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">	
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">	
 					
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>

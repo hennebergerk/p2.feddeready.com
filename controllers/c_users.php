@@ -53,10 +53,11 @@ class users_controller extends base_controller {
         # Insert this user into the database 
         $user_id = DB::instance(DB_NAME)->insert("users", $_POST);
 
-        # For now, just confirm they've signed up - 
-        # You should eventually make a proper View for this
-        echo "You're signed up";
+        # # Set up the view
+        $this->template->content = View::instance("v_users_signup_success");
 
+        # Render the view
+        echo $this->template;
         }
 
     }

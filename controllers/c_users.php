@@ -9,17 +9,36 @@ class users_controller extends base_controller {
         echo "This is the index page";
     }
 
-    public function signup() {
+    public function signup($error = NULL) {
 
         # Setup view
-            $this->template->content = View::instance('v_users_signup');
-            $this->template->title   = "Sign Up";
+        $this->template->content = View::instance('v_users_signup');
+        $this->template->title   = "Sign Up";
+
+        # Pass data to the view
+        $this->template->content->error = $error;
 
         # Render template
-            echo $this->template;
+        echo $this->template;
 
     }
     public function p_signup() {
+
+        # Check input for blank fields
+        foreach($_POST as $field => $value){
+            if(empty($value)) {
+            #If any fields are blank, send error message
+            Router::redirect('/users/signup/blank-fields');  
+            }
+        }       
+        #Check to see if the input email already exists in the database 
+        $exists = DB::instance(DB_NAME)->select_field("SELECT email FROM users WHERE email = '" . $_POST['email'] . "'");
+
+        #If email already exists
+        if($exists){
+            #Redirect to error page
+                Router::redirect('/users/signup/email-exists');
+        }else{
 
         # More data we want stored with the user
         $_POST['created']  = Time::now();
@@ -37,6 +56,8 @@ class users_controller extends base_controller {
         # For now, just confirm they've signed up - 
         # You should eventually make a proper View for this
         echo "You're signed up";
+
+        }
 
     }
 

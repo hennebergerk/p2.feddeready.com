@@ -4,14 +4,14 @@
 
 <article>
 
-    <h1><?=$post['first_name'.'last_name']?> posted:</h1>
+    <h1><?=$post['first_name']?> <?=$post['last_name']?> posted:</h1>
 
     <p><?=$post['content']?></p>
 
     <time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-        <?=Time::display($post['created'])?>
+    <?=Time::display($post['created'])?>
     </time>
-    <p>post_id: <?=$post['post_id']?></p>
+<!--<p>post_id: <?=$post['post_id']?></p>-->
 
     <p><a href='/posts/p_delete/<?=$post['post_id']?>'>
     	Delete</a>

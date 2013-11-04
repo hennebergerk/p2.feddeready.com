@@ -1,3 +1,7 @@
+<h1>Follow or unfollow any user:</h1>
+<p><a href='/posts/'>
+    See their posts in your feed</a></p>
+
 <? foreach($users as $user): ?>
 
     <!-- Print this user's name -->

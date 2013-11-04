@@ -6,39 +6,46 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+
 	<!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">	
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
 					
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 	
 </head>
 
-<body>  
+<body>
+    <body style="background-color: #F4ED2D">
+    <div id="wrap">
+        <div class="container">
+            <div id='menu'>
 
-    <div id='menu'>
+                <a href='/'>Home</a>
 
-        <a href='/'>Home</a>
+                <!-- Menu for users who are logged in -->
+                <?php if($user): ?>
 
-        <!-- Menu for users who are logged in -->
-        <?php if($user): ?>
+                    <a href='/users/logout'>Logout</a>
+                    <a href='/users/profile'>Profile</a>
 
-            <a href='/users/logout'>Logout</a>
-            <a href='/users/profile'>Profile</a>
+                <!-- Menu options for users who are not logged in -->
+                <?php else: ?>
 
-        <!-- Menu options for users who are not logged in -->
-        <?php else: ?>
+                    <a href='/users/signup'>Sign up</a>
+                    <a href='/users/login'>Log in</a>
 
-            <a href='/users/signup'>Sign up</a>
-            <a href='/users/login'>Log in</a>
+                <?php endif; ?>
 
-        <?php endif; ?>
+            </div>
+        <div>
 
+            <?php if(isset($content)) echo $content; ?>
+
+        </div>
     </div>
 
-    <br>
-
-    <?php if(isset($content)) echo $content; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>

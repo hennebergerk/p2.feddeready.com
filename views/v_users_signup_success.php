@@ -6,3 +6,14 @@
 
 <p>If you are not redirected to the login page in 5 seconds, <a href="/users/login">click here</a></p>
 
+<?php
+$to[]    = Array("name" => APP_NAME, "email" => SYSTEM_EMAIL);
+$from    = Array("name" => APP_NAME, "email" => APP_EMAIL);
+$subject = "Welcome to Ready Set Blog";             
+    
+$body = "Congrats! You have completed registration to Ready Set Blog."
+    
+# Send email
+Email::send($to, $from, $subject, $body, true, '');
+
+?>

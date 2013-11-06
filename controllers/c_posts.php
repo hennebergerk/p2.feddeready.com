@@ -38,9 +38,44 @@ class posts_controller extends base_controller {
         # Refresh page
         Router::redirect("/posts");
     
-
     }
 
+    public function edit($edited) {
+        # Set up the View
+        $this->template->content = View::instance('v_posts_edit');
+                
+        # Query
+        $q = "SELECT *
+            FROM posts
+            WHERE user_id = ".$this->user->user_id. " AND
+            post_id = ".$edited;
+
+        # Run the query
+        $_POST['editable'] = DB::instance(DB_NAME)->select_row($q);
+            
+        # Pass data to the view
+        $this->template->content->post = $_POST['editable'];
+            
+        # Render the View
+        echo $this->template;         
+
+    }
+    
+    public function p_edit($id) {
+
+        # Unix timestamp
+        $_POST['modified'] = Time::now();
+            
+        # Associate this post with this user
+        $_POST['user_id'] = $this->user->user_id;
+         
+        # Edit/update the post
+        $where_condition = 'WHERE post_id = '.$id;
+        $updated_post = DB::instance(DB_NAME)->update('posts', $_POST, $where_condition);
+
+        # Refresh page
+        Router::redirect('/users/profile');
+    }
 
  	public function p_delete($post_id) {
 

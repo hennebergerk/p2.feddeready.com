@@ -16,12 +16,11 @@
     <p>
     <a href='/users/signup'>Sign up</a><br>
     <a href='/users/login'>Log in</a>
-    <p>+1 features:
+    <p>+1 features:</p>
         <ul>
 			<li>Delete a post</li>
 			<li>Edit a post</li>
 		</ul>
-    </p>
 
 <?php endif; ?>
 </div>

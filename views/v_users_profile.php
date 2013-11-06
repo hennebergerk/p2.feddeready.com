@@ -19,7 +19,7 @@
     <p> <a href='/posts/edit/<?=$post['post_id']; ?>' > 
         Edit</a>
         —
-        <a href='/posts/p_delete/<?=$post['post_id']?>'>
+        <a href='/posts/p_delete/<?=$post['post_id']; ?>'>
     	Delete</a>
     </p>
     <br>

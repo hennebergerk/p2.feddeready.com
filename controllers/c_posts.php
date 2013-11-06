@@ -111,7 +111,7 @@ class posts_controller extends base_controller {
                 ON posts.user_id = users.user_id
             WHERE users_users.user_id = '.$this->user->user_id;
 
-       # Run the query
+        # Run the query
         $posts = DB::instance(DB_NAME)->select_rows($q);
 
         # Pass data to the View

@@ -40,6 +40,7 @@ class users_controller extends base_controller {
                 Router::redirect('/users/signup/email-exists');
         }else{
 
+
         # More data we want stored with the user
         $_POST['created']  = Time::now();
         $_POST['modified'] = Time::now();
@@ -48,7 +49,7 @@ class users_controller extends base_controller {
         $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);            
 
         # Create an encrypted token via their email address and a random string
-        $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string()); 
+        $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 
         # Insert this user into the database 
         $user_id = DB::instance(DB_NAME)->insert("users", $_POST);
@@ -58,6 +59,7 @@ class users_controller extends base_controller {
 
         # Render the view
         echo $this->template;
+
         }
 
     }

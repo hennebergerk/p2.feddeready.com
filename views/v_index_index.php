@@ -30,9 +30,6 @@
 					<li>XXXXXXXXXXXXXXX</li>
 				</ul>
             </p>
-            <p>
-            	sendgrid
-            </p>
 
         <?php endif; ?>
 

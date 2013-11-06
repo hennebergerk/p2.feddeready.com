@@ -35,10 +35,11 @@
                 <?php endif; ?>
 
             </div>
-        <div>
+            <div>
             <?php if(isset($content)) echo $content; ?>
+            </div>
+        </div>
     </div>
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>

@@ -17,7 +17,6 @@
 </head>
 
 <body>
-    <body style="background-color: #F4ED2D">
     <div id="wrap">
         <div class="container">
             <div id='menu'>

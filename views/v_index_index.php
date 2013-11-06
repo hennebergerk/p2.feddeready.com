@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-</head>
-
-<body>
 	<div id="wrap">
 		<div class="container">
         	<div class="page-header">
@@ -35,6 +28,3 @@
 
  		</div>
  	</div>
-
-</body>
-</html>

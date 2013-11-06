@@ -1,5 +1,3 @@
-
-
 <form method='POST' action='/posts/p_add'>
 
     <h4>New Post:</h4><br>
@@ -8,5 +6,4 @@
     <br><br>
     <input type='submit' value='New post'>
 
-</form> 
-
+</form>

@@ -4,7 +4,6 @@
 
 <?php foreach($posts as $post): ?>
 
-
 <article>
 
     <p><b><?=$post['first_name']?> <?=$post['last_name']?></b> posted:</p>

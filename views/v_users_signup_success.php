@@ -1,4 +1,4 @@
-<META HTTP-EQUIV="refresh" CONTENT="5;URL=/users/login">
+<META HTTP-EQUIV="refresh" CONTENT="3;URL=/users/login">
 
 <h1>Congratulations!</h1>
 

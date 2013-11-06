@@ -16,10 +16,13 @@
     		</time>
     </p>   
 
-    <p><a href='/posts/p_delete/<?=$post['post_id']?>'>
+    <p> <a href='/posts/edit/<?=$post['post_id']; ?>' > 
+        Edit</a>
+        —
+        <a href='/posts/p_delete/<?=$post['post_id']?>'>
     	Delete</a>
-    	<br><br>
     </p>
+    <br>
 
 </article>
 

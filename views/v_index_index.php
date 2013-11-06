@@ -26,8 +26,8 @@
             <a href='/users/login'>Log in</a>
             <p>+1 features:
             	<ul>
-					<li>delete a post</li>
-					<li>XXXXXXXXXXXXXXX</li>
+					<li>Delete a post</li>
+					<li>Edit a post</li>
 				</ul>
             </p>
 
